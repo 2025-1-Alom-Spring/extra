@@ -2,6 +2,7 @@ package com.example.extra.mock;
 
 import com.example.extra.member.Member;
 import com.example.extra.post.Post;
+import java.util.ArrayList;
 import java.util.Locale;
 import lombok.RequiredArgsConstructor;
 import net.datafaker.Faker;
@@ -27,6 +28,7 @@ public class MockFactory {
     return Member.builder()
         .username(username)
         .nickname(nickname)
+        .posts(new ArrayList<>())
         .build();
   }
 

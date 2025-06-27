@@ -14,7 +14,12 @@ public class MockController {
   private final SimpleMockDataService simpleMockDataService;
 
   @PostMapping("/simple/1")
-  public void generateSimpleMockData(int count) {
+  public void generateSimpleMockData1(int count) {
     simpleMockDataService.generateMockDataWithForLoopAndSaveEach(count);
+  }
+
+  @PostMapping("/simple/2")
+  public void generateSimpleMockData2(int count) {
+    simpleMockDataService.generateMockDataWithForLoopAndSaveAll(count);
   }
 }
