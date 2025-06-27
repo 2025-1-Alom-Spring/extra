@@ -21,6 +21,14 @@ configurations {
 
 repositories {
     mavenCentral()
+    maven {
+        name = 'chuseok22NexusReleases'
+        url = uri('https://nexus.chuseok22.com/repository/maven-releases/')
+        metadataSources {
+            mavenPom()
+            artifact()
+        }
+    }
 }
 
 dependencies {
