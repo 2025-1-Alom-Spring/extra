@@ -23,7 +23,7 @@ import lombok.Setter;
 public class Member {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
   private String username;
@@ -38,5 +38,4 @@ public class Member {
     posts.add(post);
     post.setMember(this);
   }
-
 }
