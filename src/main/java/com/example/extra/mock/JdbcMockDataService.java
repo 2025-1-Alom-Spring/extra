@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class JdbcMcokDataService {
+public class JdbcMockDataService {
 
   private final MockFactory mockFactory;
   private final JdbcTemplate jdbcTemplate;

@@ -1,6 +1,6 @@
 package com.example.extra.controller;
 
-import com.example.extra.mock.JdbcMcokDataService;
+import com.example.extra.mock.JdbcMockDataService;
 import com.example.extra.mock.MultiThreadMockDataService;
 import com.example.extra.mock.SimpleMockDataService;
 import java.util.concurrent.ExecutionException;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MockController {
 
   private final SimpleMockDataService simpleMockDataService;
-  private final JdbcMcokDataService jdbcMcokDataService;
+  private final JdbcMockDataService jdbcMockDataService;
   private final MultiThreadMockDataService multiThreadMockDataService;
 
   @PostMapping("/simple/save-each")
@@ -30,7 +30,7 @@ public class MockController {
 
   @PostMapping("/jdbc/batch/update")
   public void generateJdbcMockData2(int count) {
-    jdbcMcokDataService.generateMockDataWithJdbcBatchUpdate(count);
+    jdbcMockDataService.generateMockDataWithJdbcBatchUpdate(count);
   }
 
   @PostMapping("/multi-thread")
