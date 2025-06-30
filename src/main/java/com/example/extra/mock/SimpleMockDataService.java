@@ -3,7 +3,7 @@ package com.example.extra.mock;
 import com.example.extra.member.Member;
 import com.example.extra.member.MemberRepository;
 import com.example.extra.post.Post;
-import com.example.extra.post.PostRepository;
+import com.example.extra.post.PostJpaRepository;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class SimpleMockDataService {
 
   private final MockFactory mockFactory;
-  private final PostRepository postRepository;
+  private final PostJpaRepository postJpaRepository;
   private final MemberRepository memberRepository;
 
   /**
@@ -31,7 +31,7 @@ public class SimpleMockDataService {
       Member member = mockFactory.createMockMember(); // Mock 회원 생성
       memberRepository.save(member); // Mock 회원 저장
       Post post = mockFactory.createMockPost(member); // Mock 게시글 생성
-      postRepository.save(post); // Mock 게시글 저장
+      postJpaRepository.save(post); // Mock 게시글 저장
     }
 
     long endTime = System.currentTimeMillis();

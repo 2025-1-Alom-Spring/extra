@@ -2,7 +2,8 @@ package com.example.extra.filter;
 
 import com.example.extra.post.Post;
 import com.example.extra.post.PostInfoResponse;
-import com.example.extra.post.PostRepository;
+import com.example.extra.post.PostJpaRepository;
+import com.example.extra.post.PostQueryDslRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -15,7 +16,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PostFilterService {
 
-  private final PostRepository postRepository;
+  private final PostJpaRepository postJpaRepository;
+  private final PostQueryDslRepository postQueryDslRepository;
 
   /**
    * 게시글 필터링 조회 (JPQL)
@@ -28,7 +30,7 @@ public class PostFilterService {
     Pageable pageable = PageRequest.of(0, 30);
 
     // DB 조회
-    Page<Post> posts = postRepository.filteredPostByJpql(
+    Page<Post> posts = postJpaRepository.filteredPostByJpql(
         title,
         content,
         author,
@@ -38,12 +40,15 @@ public class PostFilterService {
     return posts.map(this::toDTO);
   }
 
+  /**
+   * 게시글 필터링 조회 (Native Query)
+   */
   public Page<PostInfoResponse> filteredPostByNativeQuery(String title, String content, String author) {
     // Pageable 설정
     Pageable pageable = PageRequest.of(0, 30);
 
     // DB 조회
-    Page<Post> posts = postRepository.filteredPostByNativeQuery(
+    Page<Post> posts = postJpaRepository.filteredPostByNativeQuery(
         title,
         content,
         author,
@@ -51,6 +56,14 @@ public class PostFilterService {
     );
 
     return posts.map(this::toDTO);
+  }
+
+  public Page<PostInfoResponse> filteredPostByQueryDsl(String title, String content, String author) {
+    // Pageable 설정
+    Pageable pageable = PageRequest.of(0, 30);
+
+    // DB 조회
+    return postQueryDslRepository.filteredPostByQueryDsl(title, content, author, pageable);
   }
 
   private PostInfoResponse toDTO(Post post) {

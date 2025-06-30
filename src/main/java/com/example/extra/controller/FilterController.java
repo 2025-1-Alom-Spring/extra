@@ -27,4 +27,9 @@ public class FilterController {
   public Page<PostInfoResponse> filteredPostByNativeQuery(@Nullable String title, @Nullable String content, @Nullable String author) {
     return postFilterService.filteredPostByNativeQuery(title, content, author);
   }
+
+  @GetMapping("/posts/query-dsl")
+  public Page<PostInfoResponse> filteredPostByQueryDsl(@Nullable String title, @Nullable String content, @Nullable String author) {
+    return postFilterService.filteredPostByQueryDsl(title, content, author);
+  }
 }
