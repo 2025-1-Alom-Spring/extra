@@ -3,7 +3,7 @@ package com.example.extra.mock;
 import com.example.extra.member.Member;
 import com.example.extra.member.MemberRepository;
 import com.example.extra.post.Post;
-import com.example.extra.post.PostJpaRepository;
+import com.example.extra.filter.PostJpaRepository;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

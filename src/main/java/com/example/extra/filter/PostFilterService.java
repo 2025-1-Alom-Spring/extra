@@ -2,8 +2,6 @@ package com.example.extra.filter;
 
 import com.example.extra.post.Post;
 import com.example.extra.post.PostInfoResponse;
-import com.example.extra.post.PostJpaRepository;
-import com.example.extra.post.PostQueryDslRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;

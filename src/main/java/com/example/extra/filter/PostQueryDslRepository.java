@@ -1,6 +1,8 @@
-package com.example.extra.post;
+package com.example.extra.filter;
 
 import com.example.extra.member.QMember;
+import com.example.extra.post.PostInfoResponse;
+import com.example.extra.post.QPost;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQuery;

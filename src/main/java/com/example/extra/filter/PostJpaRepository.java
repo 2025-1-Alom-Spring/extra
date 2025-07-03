@@ -1,5 +1,6 @@
-package com.example.extra.post;
+package com.example.extra.filter;
 
+import com.example.extra.post.Post;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -31,16 +32,14 @@ public interface PostJpaRepository extends JpaRepository<Post, Long> {
       WHERE (:title   IS NULL OR p.title   LIKE CONCAT('%', :title,   '%'))
         AND (:content IS NULL OR p.content LIKE CONCAT('%', :content, '%'))
         AND (:author  IS NULL OR m.nickname LIKE CONCAT('%', :author,  '%'))
-      """,
-      countQuery = """
-          SELECT COUNT(*)
-          FROM post p
-          JOIN member m ON p.member_id = m.id
-          WHERE (:title   IS NULL OR p.title   LIKE CONCAT('%', :title,   '%'))
-            AND (:content IS NULL OR p.content LIKE CONCAT('%', :content, '%'))
-            AND (:author  IS NULL OR m.nickname LIKE CONCAT('%', :author,  '%'))
-          """,
-      nativeQuery = true)
+      """, countQuery = """
+      SELECT COUNT(*)
+      FROM post p
+      JOIN member m ON p.member_id = m.id
+      WHERE (:title   IS NULL OR p.title   LIKE CONCAT('%', :title,   '%'))
+        AND (:content IS NULL OR p.content LIKE CONCAT('%', :content, '%'))
+        AND (:author  IS NULL OR m.nickname LIKE CONCAT('%', :author,  '%'))
+      """, nativeQuery = true)
   Page<Post> filteredPostByNativeQuery(
       @Param("title") String title,
       @Param("content") String content,
